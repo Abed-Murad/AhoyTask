@@ -59,21 +59,26 @@ class MainFragment : Fragment(), ForecastAdapter.RecyclerOnItemClickListener {
                 response: Response<ForecastResponse>
             ) {
                 if (response.code() == 200) {
-                    Toast.makeText(activity, "Toast to the Gods", Toast.LENGTH_SHORT).show()
-                    mBinding.buttonFirst.setOnClickListener { findNavController().navigate(R.id.action_MainFragment_to_DetailsFragment) }
-                    mBinding.forecastRecyclerView.adapter = ForecastAdapter(this@MainFragment ,response.body()!!.list)
+                    mBinding.forecastRecyclerView.adapter =
+                        ForecastAdapter(this@MainFragment, response.body()!!.list)
                     mBinding.forecastRecyclerView.layoutManager = LinearLayoutManager(context)
                     mBinding.forecastRecyclerView.setHasFixedSize(true)
-                    mBinding.forecastRecyclerView.isNestedScrollingEnabled = false;
+                    mBinding.forecastRecyclerView.isNestedScrollingEnabled = false
+                    mBinding.forecastRecyclerView.visibility = View.VISIBLE
+                    mBinding.progressBar.visibility = View.GONE
                 }
             }
 
             override fun onFailure(call: Call<ForecastResponse>, t: Throwable) {
-
+                mBinding.progressBar.visibility = View.GONE
+                Toast.makeText(activity, "Something went wong, Please try again later!", Toast.LENGTH_SHORT).show()
             }
         })
 
 
+
+        mBinding.headerLayout.setOnClickListener{
+        }
 
 
     }
