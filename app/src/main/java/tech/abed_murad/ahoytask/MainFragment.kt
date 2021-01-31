@@ -16,8 +16,8 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import tech.abed_murad.ahoytask.databinding.FragmentMainBinding
-import tech.abed_murad.ahoytask.model.ForecastResponse
-import tech.abed_murad.ahoytask.model.ForecastResponse.DayWeather
+import tech.abed_murad.local.model.ForecastResponse
+import tech.abed_murad.local.model.ForecastResponse.DayWeather
 import tech.abed_murad.ahoytask.network.WeatherService
 
 
@@ -53,10 +53,10 @@ class MainFragment : Fragment(), ForecastAdapter.RecyclerOnItemClickListener {
             "c9da7f4769c845195c654aa2c0d3f16b"
         )
 
-        call.enqueue(object : Callback<ForecastResponse> {
+        call.enqueue(object : Callback<tech.abed_murad.local.model.ForecastResponse> {
             override fun onResponse(
-                call: Call<ForecastResponse>,
-                response: Response<ForecastResponse>
+                call: Call<tech.abed_murad.local.model.ForecastResponse>,
+                response: Response<tech.abed_murad.local.model.ForecastResponse>
             ) {
                 if (response.code() == 200) {
                     mBinding.forecastRecyclerView.adapter =
@@ -69,7 +69,7 @@ class MainFragment : Fragment(), ForecastAdapter.RecyclerOnItemClickListener {
                 }
             }
 
-            override fun onFailure(call: Call<ForecastResponse>, t: Throwable) {
+            override fun onFailure(call: Call<tech.abed_murad.local.model.ForecastResponse>, t: Throwable) {
                 mBinding.progressBar.visibility = View.GONE
                 Toast.makeText(activity, "Something went wong, Please try again later!", Toast.LENGTH_SHORT).show()
             }

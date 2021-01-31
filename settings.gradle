@@ -1,4 +1,4 @@
-include ':buildSrc'
+include ':local'
 include ':settings'
 include ':app'
 rootProject.name = "AhoyTask"

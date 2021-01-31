@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import kotlinx.android.synthetic.main.fragment_detials.*
 import tech.abed_murad.ahoytask.databinding.FragmentDetialsBinding
-import tech.abed_murad.ahoytask.model.ForecastResponse
+import tech.abed_murad.local.model.ForecastResponse
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -28,7 +28,7 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val dayWeather = arguments?.getParcelable<ForecastResponse.DayWeather>("dayWeatherArg")
+        val dayWeather = arguments?.getParcelable<tech.abed_murad.local.model.ForecastResponse.DayWeather>("dayWeatherArg")
         weatherDescriptionTV.text = dayWeather!!.weather[0].description
     }
 

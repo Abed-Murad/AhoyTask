@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import tech.abed_murad.ahoytask.databinding.ItemWeatherForecastBinding
-import tech.abed_murad.ahoytask.model.ForecastResponse.DayWeather
+import tech.abed_murad.local.model.ForecastResponse.DayWeather
 
 class ForecastAdapter(
     itemClickListener: RecyclerOnItemClickListener,

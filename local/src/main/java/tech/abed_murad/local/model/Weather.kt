@@ -1,4 +1,4 @@
-package tech.abed_murad.ahoytask.model
+package tech.abed_murad.local.model
 
 
 import com.google.gson.annotations.SerializedName
