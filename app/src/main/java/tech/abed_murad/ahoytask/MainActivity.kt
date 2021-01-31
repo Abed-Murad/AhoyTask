@@ -15,6 +15,8 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.location.*
 
 
@@ -43,13 +45,12 @@ class MainActivity : AppCompatActivity() {
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.action_settings -> {
-                toast("Settings Clicked")
+                findNavController(R.id.nav_host_fragment).navigate(R.id.action_MainFragment_to_SettingsFragment)
                 return true
             }
             else -> super.onOptionsItemSelected(item)
         }
     }
-
 
 
     @SuppressLint("MissingPermission")
@@ -117,13 +118,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkPermissions(): Boolean {
-        return ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+        return ActivityCompat.checkSelfPermission(
+            this,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+            this,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
     }
 
     private fun requestPermissions() {
-        ActivityCompat.requestPermissions(this, arrayOf(
+        ActivityCompat.requestPermissions(
+            this, arrayOf(
                 Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.ACCESS_FINE_LOCATION), PERMISSION_ID)
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ), PERMISSION_ID
+        )
     }
 
     private fun isLocationEnabled(): Boolean {
@@ -133,7 +143,11 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String?>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String?>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == PERMISSION_ID) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Preference Titles -->
+    <string name="temperature_header">Temperature</string>
+    <!-- Temperature Preferences -->
+    <string name="temperature_unit_title">Temperature Unit</string>
+    <string name="settings__pick_unit">Choose temperature Unit</string>
+</resources>
