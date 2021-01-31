@@ -1,11 +1,13 @@
 package tech.abed_murad.ahoytask
 
+import android.content.Context
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,8 +28,14 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_filter -> true
+            R.id.action_centigrade -> {
+                toast("centigrade clicked")
+                return true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
 }
+
+fun AppCompatActivity.toast(message: CharSequence) =
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()

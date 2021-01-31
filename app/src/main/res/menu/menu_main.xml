@@ -2,53 +2,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="tech.abed_murad.ahoytask.MainActivity">
-<!--    <group-->
-<!--        android:checkableBehavior="single"-->
-<!--        android:orderInCategory="100">-->
+    <!--    <group-->
+    <!--        android:checkableBehavior="single"-->
+    <!--        android:orderInCategory="100">-->
 
-<!--        <item-->
-<!--            android:id="@+id/action_settings"-->
-<!--            android:checked="true"-->
-<!--            android:orderInCategory="101"-->
-<!--            android:title="@string/action_centigrade"-->
-<!--            app:showAsAction="never" />-->
+    <!--        <item-->
+    <!--            android:id="@+id/action_settings"-->
+    <!--            android:checked="true"-->
+    <!--            android:orderInCategory="101"-->
+    <!--            android:title="@string/action_centigrade"-->
+    <!--            app:showAsAction="never" />-->
 
-<!--        <item-->
-<!--            android:id="@+id/action_settings1"-->
-<!--            android:orderInCategory="101"-->
-<!--            android:title="@string/action_fahrenheit"-->
-<!--            app:showAsAction="never" />-->
-<!--    </group>-->
+    <!--        <item-->
+    <!--            android:id="@+id/action_settings1"-->
+    <!--            android:orderInCategory="101"-->
+    <!--            android:title="@string/action_fahrenheit"-->
+    <!--            app:showAsAction="never" />-->
+    <!--    </group>-->
+
 
     <item
-        android:id="@+id/action_filter"
-        android:icon="@drawable/abc_vector_test"
-        android:orderInCategory="2"
-        android:title="@string/action_temperature_unit"
-        app:showAsAction="always">
+        android:id="@+id/action_centigrade"
+        android:title="@string/action_centigrade"
+        app:showAsAction="always"
+        app:actionLayout="@layout/menu_item_centigrade" />
 
-        <menu>
-            <group android:checkableBehavior="single">
-
-
-                <item
-                    android:id="@+id/filter_completed"
-                    android:title="Completed"
-                    app:showAsAction="never" />
-
-                <item
-                    android:id="@+id/filter_all"
-                    android:title="All Projects"
-                    app:showAsAction="never" />
-
-            </group>
-        </menu>
-    </item>
     <item
-        android:id="@+id/app_bar_switch"
-        android:orderInCategory="3"
-        android:title="Switch"
-        app:actionLayout="@layout/switch_item"
-        app:showAsAction="always" />
+        android:id="@+id/action_fahrenheit"
+        android:orderInCategory="4"
+        app:showAsAction="always"
+        android:title="@string/action_fahrenheit"
+        app:actionLayout="@layout/menu_item_fahrenheit" />
 
 </menu>

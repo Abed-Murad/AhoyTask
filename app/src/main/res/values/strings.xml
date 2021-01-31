@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AhoyTask</string>
+    <string name="app_name">Weather App</string>
     <string name="action_centigrade">Centigrade</string>
     <string name="action_fahrenheit">Fahrenheit</string>
     <!-- Strings used for fragments for navigation -->
@@ -10,5 +10,10 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="action_temperature_unit">Change Temprature unit</string>
+    <string name="action_temperature_unit">Change Temperature unit</string>
+    <string name="cloudiness">Cloudiness</string>
+    <string name="pressure">Pressure</string>
+    <string name="wind">Wind</string>
+    <string name="humidity">Humidity</string>
+    <string name="today">Today</string>
 </resources>
