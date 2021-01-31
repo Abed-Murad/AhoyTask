@@ -1,13 +1,14 @@
 package tech.abed_murad.ahoytask
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import tech.abed_murad.ahoytask.databinding.FragmentDetialsBinding
-import tech.abed_murad.local.model.ForecastResponse.DayWeather
+import tech.abed_murad.ahoytask.local.model.ForecastResponse.DayWeather
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -29,6 +30,15 @@ class DetailsFragment : Fragment() {
 
         val dayWeather = arguments?.getParcelable<DayWeather>("dayWeatherArg")
         mBinding.weatherDescriptionTV.text = dayWeather!!.weather[0].description
+
+
+        val db = (requireActivity().application as MyApplication).instance
+        val weatherDao = db!!.dayWeatherDao()
+
+
+        val result = weatherDao.getAll().value
+        Log.d("ttt", result.toString())
+
     }
 
 }

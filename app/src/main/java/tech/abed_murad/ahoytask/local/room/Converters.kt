@@ -1,17 +1,17 @@
-package tech.abed_murad.local
+package tech.abed_murad.ahoytask.local.room
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import tech.abed_murad.local.model.ForecastResponse
-import tech.abed_murad.local.model.ForecastResponse.DayWeather
-import tech.abed_murad.local.model.ForecastResponse.DayWeather.Temp
-import tech.abed_murad.local.model.ForecastResponse.City
-import tech.abed_murad.local.model.Weather
+import tech.abed_murad.ahoytask.local.model.ForecastResponse.DayWeather
+import tech.abed_murad.ahoytask.local.model.ForecastResponse.DayWeather.FeelsLike
+import tech.abed_murad.ahoytask.local.model.ForecastResponse.City
+import tech.abed_murad.ahoytask.local.model.ForecastResponse.DayWeather.Weather
+import tech.abed_murad.ahoytask.local.model.ForecastResponse.DayWeather.Temp
 import java.lang.reflect.Type
 import java.util.*
 
-object Converters {
+ class Converters {
     var gson: Gson = Gson()
 
     @TypeConverter
@@ -43,7 +43,7 @@ object Converters {
     }
 
     @TypeConverter
-    fun stringToCity(data: String?): ForecastResponse.City? {
+    fun stringToCity(data: String?): City? {
         return if (data == null) {
             null
         } else gson.fromJson(data, City::class.java)
@@ -51,6 +51,18 @@ object Converters {
 
     @TypeConverter
     fun CityToString(someObjects: City?): String {
+        return gson.toJson(someObjects)
+    }
+
+     @TypeConverter
+    fun stringtoFeelsLike(data: String?): FeelsLike? {
+        return if (data == null) {
+            null
+        } else gson.fromJson(data, FeelsLike::class.java)
+    }
+
+    @TypeConverter
+    fun feelsLikeToString(someObjects: FeelsLike?): String {
         return gson.toJson(someObjects)
     }
 

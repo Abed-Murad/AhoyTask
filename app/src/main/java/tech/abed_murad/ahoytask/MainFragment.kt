@@ -15,8 +15,9 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import tech.abed_murad.ahoytask.databinding.FragmentMainBinding
+import tech.abed_murad.ahoytask.local.model.ForecastResponse
 import tech.abed_murad.ahoytask.network.WeatherService
-import tech.abed_murad.local.model.ForecastResponse.DayWeather
+import tech.abed_murad.ahoytask.local.model.ForecastResponse.DayWeather
 
 
 /**
@@ -47,14 +48,18 @@ class MainFragment : Fragment(), ForecastAdapter.RecyclerOnItemClickListener {
         val call = weatherService.getCurrentWeatherData(
             "31.388520",
             "34.702372",
-            "5",
+            "10",
             "c9da7f4769c845195c654aa2c0d3f16b"
         )
 
-        call.enqueue(object : Callback<tech.abed_murad.local.model.ForecastResponse> {
+        val db = (requireActivity().application as MyApplication).instance
+        val weatherDao = db.dayWeatherDao()
+
+
+        call.enqueue(object : Callback<ForecastResponse> {
             override fun onResponse(
-                call: Call<tech.abed_murad.local.model.ForecastResponse>,
-                response: Response<tech.abed_murad.local.model.ForecastResponse>
+                call: Call<ForecastResponse>,
+                response: Response<ForecastResponse>
             ) {
                 if (response.code() == 200) {
                     mBinding.forecastRecyclerView.adapter =
@@ -64,18 +69,27 @@ class MainFragment : Fragment(), ForecastAdapter.RecyclerOnItemClickListener {
                     mBinding.forecastRecyclerView.isNestedScrollingEnabled = false
                     mBinding.forecastRecyclerView.visibility = View.VISIBLE
                     mBinding.progressBar.visibility = View.GONE
+                    weatherDao.insertAll(response.body()!!.list)
                 }
             }
 
-            override fun onFailure(call: Call<tech.abed_murad.local.model.ForecastResponse>, t: Throwable) {
+            override fun onFailure(
+                call: Call<ForecastResponse>,
+                t: Throwable
+            ) {
                 mBinding.progressBar.visibility = View.GONE
-                Toast.makeText(activity, "Something went wong, Please try again later!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    activity,
+                    "Something went wong, Please try again later!",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         })
 
 
 
         mBinding.headerLayout.setOnClickListener{
+
         }
 
 

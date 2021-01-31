@@ -1,7 +1,9 @@
-package tech.abed_murad.local.model
+package tech.abed_murad.ahoytask.local.model
 
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
@@ -40,11 +42,13 @@ data class ForecastResponse(
     }
 
     @Parcelize
+    @Entity
     data class DayWeather(
         @SerializedName("clouds")
         val clouds: Float,
         @SerializedName("deg")
         val deg: Float,
+        @PrimaryKey()
         @SerializedName("dt")
         val dt: Float,
         @SerializedName("feels_like")

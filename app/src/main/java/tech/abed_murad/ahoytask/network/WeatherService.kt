@@ -3,7 +3,7 @@ package tech.abed_murad.ahoytask.network
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
-import tech.abed_murad.local.model.ForecastResponse
+import tech.abed_murad.ahoytask.local.model.ForecastResponse
 
 interface WeatherService {
     @GET("forecast/daily")
@@ -12,7 +12,7 @@ interface WeatherService {
         @Query("lon") lon: String,
         @Query("cnt") count: String,
         @Query("appid") appid: String
-    ): Call<tech.abed_murad.local.model.ForecastResponse>
+    ): Call<ForecastResponse>
 
 
 
