@@ -29,11 +29,14 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val dayWeather = arguments?.getParcelable<DayWeather>("dayWeatherArg")
-        mBinding.weatherDescriptionTV.text = dayWeather!!.weather[0].description
+        mBinding.today = dayWeather
+        mBinding.dateDayTV.text = dayWeather!!.dt.getDay()
+        mBinding.sunriseTV.text = dayWeather.sunrise.getTime()
+        mBinding.sunsetTV.text = dayWeather.sunset.getTime()
 
 
         val db = (requireActivity().application as MyApplication).db
-        val weatherDao = db!!.dayWeatherDao()
+        val weatherDao = db.dayWeatherDao()
 
 
         val result = weatherDao.getAll().value

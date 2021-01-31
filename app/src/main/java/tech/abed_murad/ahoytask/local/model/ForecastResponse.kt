@@ -43,7 +43,7 @@ data class ForecastResponse(
         val deg: Float,
         @PrimaryKey()
         @SerializedName("dt")
-        val dt: Float,
+        val dt: Long,
         @SerializedName("feels_like")
         val feelsLike: FeelsLike,
         @SerializedName("humidity")
@@ -57,9 +57,9 @@ data class ForecastResponse(
         @SerializedName("speed")
         val speed: Double,
         @SerializedName("sunrise")
-        val sunrise: Float,
+        val sunrise: Long,
         @SerializedName("sunset")
-        val sunset: Float,
+        val sunset: Long,
         @SerializedName("temp")
         val temp: Temp,
         @SerializedName("weather")

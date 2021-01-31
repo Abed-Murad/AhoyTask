@@ -56,6 +56,7 @@ class ForecastAdapter(
             this.mDayWeather = dayWeather
             binding.today = dayWeather
             binding.weatherIconIV.setImageResource(dayWeather.weather[0].main.getImageIcon())
+            binding.dateTV.text = dayWeather.dt.getDay()
             binding.executePendingBindings()
         }
 

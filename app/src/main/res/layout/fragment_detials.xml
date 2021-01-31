@@ -3,6 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+    <data>
+
+        <variable
+            name="today"
+            type="tech.abed_murad.ahoytask.local.model.ForecastResponse.DayWeather" />
+    </data>
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,19 +29,20 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/cityNameTV"
+                android:id="@+id/dateDayTV"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
+                android:text="asdasdasd"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:text="@string/today"
                 android:textSize="36sp"
                 app:layout_constraintEnd_toStartOf="@+id/weatherIconIV"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                 />
 
 
             <TextView
@@ -45,11 +55,12 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:padding="4dp"
-                android:text="Sky is Clear"
+                android:text="@{today.weather.get(0).description}"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toStartOf="@+id/weatherIconIV"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cityNameTV" />
+                app:layout_constraintTop_toBottomOf="@+id/dateDayTV"
+                tools:text="Sky is Clear" />
 
 
             <ImageView
@@ -74,10 +85,11 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
-                android:text="26.25°"
+                android:text='@{String.valueOf(today.temp.day) + "°"}'
                 android:textSize="46sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weatherDescriptionTV" />
+                app:layout_constraintTop_toBottomOf="@+id/weatherDescriptionTV"
+                tools:text="26.25°" />
 
 
             <TextView
@@ -88,12 +100,13 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight="5"
                 android:gravity="center_horizontal|bottom"
-                android:text="35°"
+                android:text='@{String.valueOf(today.temp.max) + "°"}'
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/weatherIconIV"
                 app:layout_constraintStart_toEndOf="@+id/currentTempTV"
-                app:layout_constraintTop_toTopOf="@+id/currentTempTV" />
+                app:layout_constraintTop_toTopOf="@+id/currentTempTV"
+                tools:text="35°" />
 
             <TextView
                 android:id="@+id/minTempTV"
@@ -103,13 +116,14 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight="5"
                 android:gravity="center_horizontal|end"
-                android:text="21°"
+                android:text='@{String.valueOf(today.temp.min) + "°"}'
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/currentTempTV"
                 app:layout_constraintEnd_toStartOf="@+id/weatherIconIV"
                 app:layout_constraintStart_toEndOf="@+id/currentTempTV"
                 app:layout_constraintTop_toBottomOf="@+id/maxTempTV"
-                tools:ignore="RtlSymmetry" />
+                tools:ignore="RtlSymmetry"
+                tools:text="21°" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -158,7 +172,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingBottom="8dp"
-                        android:text="95.5%"
+                        android:text='@{String.valueOf(today.temp.day) + "%"}'
+                        tools:text="95.5%"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -187,7 +202,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingBottom="8dp"
-                        android:text="3.14 m/s"
+                        android:text='@{String.valueOf(today.speed) + " m/s"}'
+                        tools:text="3.14 m/s"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -216,7 +232,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingBottom="8dp"
-                        android:text="10%"
+                        android:text='@{String.valueOf(today.clouds) + "%"}'
+                        tools:text="10%"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -227,8 +244,8 @@
                 android:id="@+id/secondLineLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="16dp"
+                android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@id/firstLineLayout"
                 tools:layout_editor_absoluteX="16dp">
 
@@ -257,7 +274,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingBottom="8dp"
-                        android:text="1006.10 Pda"
+                        android:text='@{String.valueOf(today.pressure) + " hpa"}'
+                        tools:text="1006.10 Pda"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -286,7 +304,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingBottom="8dp"
-                        android:text="95.5%"
+                        tools:text="95.5%"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -315,7 +333,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingBottom="8dp"
-                        android:text="3.14 m/s"
+                        tools:text="3.14 m/s"
                         android:textSize="18sp" />
                 </LinearLayout>
 
