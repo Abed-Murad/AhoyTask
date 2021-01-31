@@ -7,29 +7,22 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import tech.abed_murad.ahoytask.databinding.ItemWeatherForecastBinding
-import tech.abed_murad.ahoytask.model.DayWeather
+import tech.abed_murad.ahoytask.model.ForecastResponse.DayWeather
 
-class ForecastAdapter(itemClickListener: RecyclerOnItemClickListener) :
+class ForecastAdapter(
+    itemClickListener: RecyclerOnItemClickListener,
+    dayWeatherArrayList: ArrayList<DayWeather>
+) :
     RecyclerView.Adapter<ForecastAdapter.WeatherHolder>() {
 
     var mItemClickListener: RecyclerOnItemClickListener = itemClickListener
 
-    private val dayWeatherList: ArrayList<DayWeather> by lazy {
-        arrayListOf(
-            DayWeather("Cool"),
-            DayWeather("Cooler"),
-            DayWeather("Way Cooler"),
-            DayWeather("GOT Cold level"),
-            DayWeather("Sunny"),
-            DayWeather("Cool"),
-            DayWeather("Cooler"),
-            DayWeather("Way Cooler"),
-            DayWeather("GOT Cold level"),
-            DayWeather("Sunny")
-        )
-    }
+    private val dayWeatherList: ArrayList<DayWeather> = dayWeatherArrayList
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForecastAdapter.WeatherHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ForecastAdapter.WeatherHolder {
         val inflater =
             parent.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val binding =
@@ -39,13 +32,11 @@ class ForecastAdapter(itemClickListener: RecyclerOnItemClickListener) :
                 parent,
                 false
             )
-      return  WeatherHolder(binding)
+        return WeatherHolder(binding)
     }
 
 
     override fun getItemCount() = dayWeatherList.size
-
-
 
 
     override fun onBindViewHolder(holder: WeatherHolder, position: Int) {
@@ -63,7 +54,7 @@ class ForecastAdapter(itemClickListener: RecyclerOnItemClickListener) :
 
         fun bind(truck: DayWeather) {
             this.mDayWeather = truck
-            binding.weatherDescriptionTV.text = mDayWeather!!.today.toString()
+            binding.weatherDescriptionTV.text = mDayWeather!!.weather[0].description
             binding.executePendingBindings()
         }
 

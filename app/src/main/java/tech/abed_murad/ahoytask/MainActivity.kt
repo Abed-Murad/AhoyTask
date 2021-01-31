@@ -1,22 +1,34 @@
 package tech.abed_murad.ahoytask
 
-import android.content.Context
+import android.Manifest
+import android.annotation.SuppressLint
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Location
+import android.location.LocationManager
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Looper
+import android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import tech.abed_murad.ahoytask.databinding.FragmentDetialsBinding
-import tech.abed_murad.ahoytask.databinding.FragmentMainBinding
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import com.google.android.gms.location.*
+
 
 class MainActivity : AppCompatActivity() {
+    var PERMISSION_ID = 44
+    lateinit var mFusedLocationClient: FusedLocationProviderClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        getLastLocation()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -37,7 +49,109 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+
+
+    @SuppressLint("MissingPermission")
+    private fun getLastLocation() {
+        // check if permissions are given
+        if (checkPermissions()) {
+
+            // check if location is enabled
+            if (isLocationEnabled()) {
+
+                // getting last
+                // location from
+                // FusedLocationClient
+                // object
+                mFusedLocationClient.lastLocation
+                    .addOnCompleteListener { task ->
+                        val location: Location? = task.result
+                        if (location == null) {
+                            requestNewLocationData()
+                        } else {
+                            Log.d("ttt", location.latitude.toString() + "")
+                            Log.d("ttt", location.longitude.toString() + "")
+                        }
+                    }
+            } else {
+                Toast.makeText(this, "Please turn on" + " your location...", Toast.LENGTH_LONG)
+                    .show()
+                val intent = Intent(ACTION_LOCATION_SOURCE_SETTINGS)
+                startActivity(intent)
+            }
+        } else {
+            // if permissions aren't available,
+            // request for permissions
+            requestPermissions()
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun requestNewLocationData() {
+
+        // Initializing LocationRequest
+        // object with appropriate methods
+        val mLocationRequest = LocationRequest()
+        mLocationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+        mLocationRequest.interval = 5
+        mLocationRequest.fastestInterval = 0
+        mLocationRequest.numUpdates = 1
+
+        // setting LocationRequest
+        // on FusedLocationClient
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        mFusedLocationClient.requestLocationUpdates(
+            mLocationRequest,
+            mLocationCallback,
+            Looper.myLooper()
+        )
+    }
+
+    private val mLocationCallback: LocationCallback = object : LocationCallback() {
+        override fun onLocationResult(locationResult: LocationResult) {
+            val mLastLocation: Location = locationResult.lastLocation
+            Log.d("ttt", "Latitude: " + mLastLocation.getLatitude().toString())
+            Log.d("ttt", "Longitude: " + mLastLocation.getLongitude().toString() + "")
+        }
+    }
+
+    private fun checkPermissions(): Boolean {
+        return ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun requestPermissions() {
+        ActivityCompat.requestPermissions(this, arrayOf(
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION), PERMISSION_ID)
+    }
+
+    private fun isLocationEnabled(): Boolean {
+        val locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
+            LocationManager.NETWORK_PROVIDER
+        )
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String?>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == PERMISSION_ID) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                getLastLocation()
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (checkPermissions()) {
+            getLastLocation()
+        }
+    }
+
+
 }
 
-fun AppCompatActivity.toast(message: CharSequence) =
-    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+
+
+

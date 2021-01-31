@@ -24,5 +24,8 @@
         <action
             android:id="@+id/action_DetailsFragment_to_MainFragment"
             app:destination="@id/MainFragment" />
+        <argument
+            android:name="dayWeatherArg"
+            app:argType="tech.abed_murad.ahoytask.model.ForecastResponse$DayWeather" />
     </fragment>
 </navigation>

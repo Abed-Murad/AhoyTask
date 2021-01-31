@@ -2,36 +2,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="tech.abed_murad.ahoytask.MainActivity">
-    <!--    <group-->
-    <!--        android:checkableBehavior="single"-->
-    <!--        android:orderInCategory="100">-->
-
-    <!--        <item-->
-    <!--            android:id="@+id/action_settings"-->
-    <!--            android:checked="true"-->
-    <!--            android:orderInCategory="101"-->
-    <!--            android:title="@string/action_centigrade"-->
-    <!--            app:showAsAction="never" />-->
-
-    <!--        <item-->
-    <!--            android:id="@+id/action_settings1"-->
-    <!--            android:orderInCategory="101"-->
-    <!--            android:title="@string/action_fahrenheit"-->
-    <!--            app:showAsAction="never" />-->
-    <!--    </group>-->
-
 
     <item
-        android:id="@+id/action_centigrade"
-        android:title="@string/action_centigrade"
-        app:showAsAction="always"
-        app:actionLayout="@layout/menu_item_centigrade" />
+        android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
 
-    <item
-        android:id="@+id/action_fahrenheit"
-        android:orderInCategory="4"
-        app:showAsAction="always"
-        android:title="@string/action_fahrenheit"
-        app:actionLayout="@layout/menu_item_fahrenheit" />
 
 </menu>
