@@ -16,14 +16,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.google.android.gms.location.*
 
 
 class MainActivity : AppCompatActivity() {
     var PERMISSION_ID = 44
     lateinit var mFusedLocationClient: FusedLocationProviderClient
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

@@ -9,16 +9,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.content_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import tech.abed_murad.ahoytask.databinding.FragmentMainBinding
-import tech.abed_murad.local.model.ForecastResponse
-import tech.abed_murad.local.model.ForecastResponse.DayWeather
 import tech.abed_murad.ahoytask.network.WeatherService
+import tech.abed_murad.local.model.ForecastResponse.DayWeather
 
 
 /**
