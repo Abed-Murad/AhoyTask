@@ -6,8 +6,8 @@ import com.google.gson.reflect.TypeToken
 import tech.abed_murad.ahoytask.local.model.ForecastResponse.DayWeather
 import tech.abed_murad.ahoytask.local.model.ForecastResponse.DayWeather.FeelsLike
 import tech.abed_murad.ahoytask.local.model.ForecastResponse.City
-import tech.abed_murad.ahoytask.local.model.ForecastResponse.DayWeather.Weather
 import tech.abed_murad.ahoytask.local.model.ForecastResponse.DayWeather.Temp
+import tech.abed_murad.ahoytask.local.model.Weather
 import java.lang.reflect.Type
 import java.util.*
 

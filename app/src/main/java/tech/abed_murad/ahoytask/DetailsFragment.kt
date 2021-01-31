@@ -32,7 +32,7 @@ class DetailsFragment : Fragment() {
         mBinding.weatherDescriptionTV.text = dayWeather!!.weather[0].description
 
 
-        val db = (requireActivity().application as MyApplication).instance
+        val db = (requireActivity().application as MyApplication).db
         val weatherDao = db!!.dayWeatherDao()
 
 

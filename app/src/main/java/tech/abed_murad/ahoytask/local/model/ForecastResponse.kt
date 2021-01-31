@@ -32,14 +32,7 @@ data class ForecastResponse(
         val population: Float,
         @SerializedName("timezone")
         val timezone: Float
-    ) {
-        data class Coord(
-            @SerializedName("lat")
-            val lat: Double,
-            @SerializedName("lon")
-            val lon: Double
-        )
-    }
+    )
 
     @Parcelize
     @Entity
@@ -98,16 +91,7 @@ data class ForecastResponse(
             @SerializedName("night")
             val night: Double
         ):Parcelable
-        @Parcelize
-        data class Weather(
-            @SerializedName("description")
-            val description: String,
-            @SerializedName("icon")
-            val icon: String,
-            @SerializedName("id")
-            val id: Float,
-            @SerializedName("main")
-            val main: String
-        ):Parcelable
     }
+
+
 }
