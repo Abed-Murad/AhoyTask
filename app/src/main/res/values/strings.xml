@@ -16,5 +16,6 @@
     <string name="action_settings">Settings</string>
     <string name="sunrise">Sunrsie</string>
     <string name="sunset">Sunset</string>
+    <string name="label_forecast">10-Days Forecast</string>
 
 </resources>

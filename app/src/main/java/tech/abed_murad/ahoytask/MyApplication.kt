@@ -20,11 +20,11 @@ class MyApplication : Application() {
 
 
     fun weatherDatabase(): WeatherDatabase {
-        val database = Room.databaseBuilder(this, WeatherDatabase::class.java, WeatherDatabase.NAME)
+        db = Room.databaseBuilder(this, WeatherDatabase::class.java, WeatherDatabase.NAME)
             .fallbackToDestructiveMigration()
             .allowMainThreadQueries()
             .build()
-        return database
+        return db
     }
 
 

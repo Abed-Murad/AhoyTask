@@ -52,9 +52,10 @@ class ForecastAdapter(
             itemView.setOnClickListener(this)
         }
 
-        fun bind(truck: DayWeather) {
-            this.mDayWeather = truck
-            binding.weatherDescriptionTV.text = mDayWeather!!.weather[0].description
+        fun bind(dayWeather: DayWeather) {
+            this.mDayWeather = dayWeather
+            binding.today = dayWeather
+            binding.weatherIconIV.setImageResource(dayWeather.weather[0].main.getImageIcon())
             binding.executePendingBindings()
         }
 

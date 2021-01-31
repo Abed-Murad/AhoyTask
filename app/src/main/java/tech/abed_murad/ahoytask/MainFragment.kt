@@ -7,15 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import tech.abed_murad.ahoytask.databinding.FragmentMainBinding
 import tech.abed_murad.ahoytask.local.model.ForecastResponse.DayWeather
 import tech.abed_murad.ahoytask.repository.WeatherRepository
-import tech.abed_murad.ahoytask.viewmodel.MainFragmentModelFactory
 import tech.abed_murad.ahoytask.viewmodel.MainFragmentViewModel
 
 
@@ -42,7 +39,8 @@ class MainFragment : Fragment(), ForecastAdapter.RecyclerOnItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val application = requireActivity().application as MyApplication
-        val weatherRepository = WeatherRepository(application.getWeatherService(), application.weatherDatabase())
+        val weatherRepository =
+            WeatherRepository(application.getWeatherService(), application.weatherDatabase())
 
         mViewModel = MainFragmentViewModel(weatherRepository)
         mBinding.viewModel = mViewModel
@@ -50,8 +48,9 @@ class MainFragment : Fragment(), ForecastAdapter.RecyclerOnItemClickListener {
 
 
         mViewModel.getForecastWeather("REMOVEMEMEMWME", "REMOVEMEMEMWME")
-            .observe(viewLifecycleOwner, Observer {
-                mBinding.forecastRecyclerView.adapter = ForecastAdapter(this@MainFragment, it)
+            .observe(viewLifecycleOwner, Observer { forecastList ->
+                mBinding.forecastRecyclerView.adapter =
+                    ForecastAdapter(this@MainFragment, forecastList)
                 mBinding.forecastRecyclerView.layoutManager = LinearLayoutManager(context)
                 mBinding.forecastRecyclerView.setHasFixedSize(true)
                 mBinding.forecastRecyclerView.isNestedScrollingEnabled = false
@@ -62,9 +61,9 @@ class MainFragment : Fragment(), ForecastAdapter.RecyclerOnItemClickListener {
 
 
         mViewModel.getTodayWeather("REMOVEMEMEMWME", "REMOVEMEMEMWME")
-            .observe(viewLifecycleOwner, Observer {
-                Log.d("mmm", it.toString())
-                Log.d("mmm", it.toString())
+            .observe(viewLifecycleOwner, Observer { todayWeather ->
+                mBinding.today = todayWeather
+                mBinding.weatherIconIV.setImageResource(todayWeather.weather[0].main.getImageIcon())
             })
     }
 
