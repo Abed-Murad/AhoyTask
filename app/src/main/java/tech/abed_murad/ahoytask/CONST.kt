@@ -18,4 +18,10 @@ object CONST {
     // Arguments
     const val KEY_DAY_WEATHER = "dayWeatherArg"
 
+    // Temperature Units.
+    const val KEY_METRIC = "metric"
+    const val KEY_IMPERIAL = "imperial"
+
+
+
 }

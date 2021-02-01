@@ -5,4 +5,22 @@
     <!-- Temperature Preferences -->
     <string name="temperature_unit_title">Temperature Unit</string>
     <string name="settings__pick_unit">Choose temperature Unit</string>
+
+    <string name="metric" >Centigrade</string>
+    <string name="imperial" >Fahrenheit</string>
+
+
+    <!-- Reply Preference -->
+    <string-array name="reply_entries">
+        <item>metric</item>
+        <item>imperial</item>
+    </string-array>
+
+    <string-array name="temperature_values">
+        <item>Centigrade</item>
+        <item>Fahrenheit</item>
+    </string-array>
+
+
+
 </resources>

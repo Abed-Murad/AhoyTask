@@ -13,6 +13,7 @@ import tech.abed_murad.ahoytask.CONST.SNOW
 import tech.abed_murad.ahoytask.CONST.THUNDERSTORM
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.round
 
 
 fun Context.toast(message: CharSequence) =
@@ -25,7 +26,7 @@ fun String.getWeatherIcon() = when (this) {
     RAIN -> R.mipmap.ic_rain
     SNOW -> R.mipmap.ic_snow
     ATMOSPHERE -> R.mipmap.ic_atmosphere
-    CLEAR -> R.mipmap.ic_clear
+    CLEAR -> R.drawable.ic_sun
     CLOUDS -> R.mipmap.ic_cloudy
     EXTREME -> R.mipmap.ic_extreme
     else -> R.mipmap.ic_launcher
@@ -58,4 +59,13 @@ private fun dateAsString(date: Date?, pattern: String): String {
         return simpleDateFormat.format(date)
     else
         throw NullPointerException("Date can't be null")
+}
+
+
+fun Double.convertToFahrenheit() = this * 9.0f / 5.0f + 32.0f
+
+fun Double.round(decimals: Int): Double {
+    var multiplier = 1.0
+    repeat(decimals) { multiplier *= 10 }
+    return round(this * multiplier) / multiplier
 }

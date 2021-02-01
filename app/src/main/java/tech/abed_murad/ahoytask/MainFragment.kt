@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chibatching.kotpref.livedata.asLiveData
 import tech.abed_murad.ahoytask.CONST.KEY_DAY_WEATHER
+import tech.abed_murad.ahoytask.CONST.KEY_METRIC
 import tech.abed_murad.ahoytask.databinding.FragmentMainBinding
 import tech.abed_murad.ahoytask.local.model.ForecastResponse.DayWeather
 import tech.abed_murad.ahoytask.local.model.GlobalUserInfo
@@ -75,8 +76,19 @@ class MainFragment : Fragment(), ForecastAdapter.RecyclerOnItemClickListener {
     private fun updateForecastUI() {
         mViewModel.getForecastWeather()
             .observe(viewLifecycleOwner, Observer { forecastList ->
+
+
+                val list = forecastList as ArrayList
+
+
+                GlobalUserInfo.asLiveData(GlobalUserInfo::temperatureUnit)
+                    .observe(viewLifecycleOwner, Observer<String> { unit ->
+                        mViewModel.updateLocalDatabase()
+                    })
+
+
                 mBinding.forecastRecyclerView.adapter =
-                    ForecastAdapter(this@MainFragment, forecastList)
+                    ForecastAdapter(this@MainFragment, list)
                 mBinding.forecastRecyclerView.layoutManager = LinearLayoutManager(context)
                 mBinding.forecastRecyclerView.setHasFixedSize(true)
                 mBinding.forecastRecyclerView.isNestedScrollingEnabled = false

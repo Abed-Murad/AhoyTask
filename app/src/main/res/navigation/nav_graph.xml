@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/SettingsFragment"
-        android:name="tech.abed_murad.settings.SettingsFragment"
+        android:name="tech.abed_murad.ahoytask.local.settings.SettingsFragment"
         android:label="SettingsFragment" />
 
     <fragment
