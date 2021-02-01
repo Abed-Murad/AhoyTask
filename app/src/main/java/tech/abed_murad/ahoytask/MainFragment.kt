@@ -51,6 +51,13 @@ class MainFragment : Fragment(), ForecastAdapter.RecyclerOnItemClickListener {
             .observe(viewLifecycleOwner, Observer<String> {
                 updateUI()
             })
+
+        GlobalUserInfo.asLiveData(GlobalUserInfo::temperatureUnit)
+            .observe(viewLifecycleOwner, Observer<String> { unit ->
+                mViewModel.updateLocalDatabase()
+            })
+
+
     }
 
     private fun updateUI() {
@@ -74,17 +81,11 @@ class MainFragment : Fragment(), ForecastAdapter.RecyclerOnItemClickListener {
     }
 
     private fun updateForecastUI() {
+
         mViewModel.getForecastWeather()
             .observe(viewLifecycleOwner, Observer { forecastList ->
 
-
                 val list = forecastList as ArrayList
-
-
-                GlobalUserInfo.asLiveData(GlobalUserInfo::temperatureUnit)
-                    .observe(viewLifecycleOwner, Observer<String> { unit ->
-                        mViewModel.updateLocalDatabase()
-                    })
 
 
                 mBinding.forecastRecyclerView.adapter =

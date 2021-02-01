@@ -6,11 +6,10 @@
     app:startDestination="@id/MainFragment">
 
 
-
     <fragment
         android:id="@+id/SettingsFragment"
         android:name="tech.abed_murad.ahoytask.local.settings.SettingsFragment"
-        android:label="SettingsFragment" />
+        android:label="Settings" />
 
     <fragment
         android:id="@+id/MainFragment"
@@ -41,7 +40,6 @@
             android:id="@+id/action_DetailsFragment_to_SettingsFragment"
             app:destination="@id/SettingsFragment" />
     </fragment>
-
 
 
 </navigation>
