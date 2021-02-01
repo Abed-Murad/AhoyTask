@@ -9,6 +9,7 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.os.Looper
 import android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -16,10 +17,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.gms.location.*
-import tech.abed_murad.local.model.GlobalUserInfo
+import kotlinx.android.synthetic.main.content_main.*
+import tech.abed_murad.ahoytask.util.toast
+import tech.abed_murad.local.GlobalUserInfo
 
 
 class MainActivity : AppCompatActivity() {
@@ -50,13 +54,24 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    @SuppressLint("RestrictedApi")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.action_settings -> {
-                findNavController(R.id.nav_host_fragment).navigate(R.id.action_MainFragment_to_SettingsFragment)
+
+                val currentFragment =
+                    NavHostFragment.findNavController(nav_host_fragment).currentDestination?.displayName
+                Log.d("ttt", currentFragment.toString())
+                if (currentFragment == "tech.abed_murad.ahoytask:id/MainFragment") {
+                    findNavController(R.id.nav_host_fragment).navigate(R.id.action_MainFragment_to_SettingsFragment)
+                    return true
+                } else if (currentFragment == "tech.abed_murad.ahoytask:id/DetailsFragment") {
+                    findNavController(R.id.nav_host_fragment).navigate(R.id.action_DetailsFragment_to_SettingsFragment)
+                    return true
+                }
                 return true
             }
             else -> super.onOptionsItemSelected(item)

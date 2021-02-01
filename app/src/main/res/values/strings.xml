@@ -3,25 +3,19 @@
     <!-- Strings used for fragments for navigation -->
     <string name="main_fragment_label">Forecast</string>
     <string name="details_fragment_label">Details</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="action_temperature_unit">Change Temperature unit</string>
     <string name="cloudiness">Cloudiness</string>
     <string name="pressure">Pressure</string>
     <string name="wind">Wind</string>
     <string name="humidity">Humidity</string>
-    <string name="today">Today</string>
     <string name="action_settings">Settings</string>
     <string name="sunrise">Sunrsie</string>
     <string name="sunset">Sunset</string>
     <string name="label_forecast">17-Days Forecast</string>
 
 
-    <string name="metric" >Centigrade</string>
-    <string name="imperial" >Fahrenheit</string>
-
     <!-- Preference Titles -->
     <string name="temperature">Temperature unit</string>
+    <string name="metric">Centigrade</string>
+    <string name="imperial">Fahrenheit</string>
 </resources>

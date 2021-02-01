@@ -3,20 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <data>
-
         <variable
             name="today"
             type="tech.abed_murad.local.model.ForecastResponse.DayWeather" />
     </data>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#EEF6FA"
-        tools:context=".DetailsFragment">
+        tools:context=".details.DetailsFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/headerLayout"
@@ -336,10 +333,7 @@
                         tools:text="3.14 m/s"
                         android:textSize="18sp" />
                 </LinearLayout>
-
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

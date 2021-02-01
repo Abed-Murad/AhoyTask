@@ -2,6 +2,7 @@ package tech.abed_murad.ahoytask
 
 import org.junit.Assert
 import org.junit.Test
+import tech.abed_murad.ahoytask.util.getWeatherIcon
 
 class GeneralTests {
 

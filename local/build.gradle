@@ -25,6 +25,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildTypes {
+        release {
+            buildConfigField "String", "SERVER_URL", '"https://api.openweathermap.org/data/2.5/"'
+
+        }
+        debug{
+            buildConfigField "String", "SERVER_URL", '"https://api.openweathermap.org/data/2.5/"'
+        }
+    }
+    buildTypes.each {
+        it.buildConfigField 'String', 'API_KEY', API_KEY
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -44,8 +58,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-
-
     implementation 'android.arch.persistence.room:runtime:1.1.1'
     kapt "androidx.room:room-compiler:2.3.0-beta01"
     implementation "androidx.room:room-runtime:2.3.0-beta01"
@@ -54,12 +66,7 @@ dependencies {
 
     implementation 'com.google.code.gson:gson:2.8.6'
 
-
     implementation 'com.chibatching.kotpref:kotpref:2.13.0'
     implementation 'com.chibatching.kotpref:livedata-support:2.13.0'
 
-
-
-
-    implementation project(":domain")
 }

@@ -8,12 +8,12 @@
 
     <fragment
         android:id="@+id/SettingsFragment"
-        android:name="tech.abed_murad.settings.SettingsFragment"
+        android:name="tech.abed_murad.ahoytask.settings.SettingsFragment"
         android:label="Settings" />
 
     <fragment
         android:id="@+id/MainFragment"
-        android:name="tech.abed_murad.ahoytask.MainFragment"
+        android:name="tech.abed_murad.ahoytask.main.MainFragment"
         android:label="@string/main_fragment_label"
         tools:layout="@layout/fragment_main">
 
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/DetailsFragment"
-        android:name="tech.abed_murad.ahoytask.DetailsFragment"
+        android:name="tech.abed_murad.ahoytask.details.DetailsFragment"
         android:label="@string/details_fragment_label"
         tools:layout="@layout/fragment_detials">
 
@@ -38,7 +38,8 @@
             app:argType="tech.abed_murad.local.model.ForecastResponse$DayWeather" />
         <action
             android:id="@+id/action_DetailsFragment_to_SettingsFragment"
-            app:destination="@id/SettingsFragment" />
+            app:destination="@id/SettingsFragment"
+            app:popUpTo="@id/MainFragment" />
     </fragment>
 
 

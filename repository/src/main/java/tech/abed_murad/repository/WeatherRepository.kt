@@ -6,9 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import tech.abed_murad.local.WeatherDatabase
+import tech.abed_murad.local.room.WeatherDatabase
 import tech.abed_murad.local.model.ForecastResponse
-import tech.abed_murad.local.model.GlobalUserInfo
+import tech.abed_murad.local.GlobalUserInfo
 import tech.abed_murad.local.model.TodayResponse
 import tech.abed_murad.remote.WeatherService
 
@@ -95,5 +95,12 @@ import tech.abed_murad.remote.WeatherService
         fetchDataFromRemote(GlobalUserInfo.lat, GlobalUserInfo.lon)
     }
 
+     fun updateTemperatureUnit(newUnit: String) {
+         GlobalUserInfo.temperatureUnit = newUnit
+     }
 
-}
+     fun getTemperatureUnit(): String {
+         return GlobalUserInfo.temperatureUnit
+     }
+
+ }

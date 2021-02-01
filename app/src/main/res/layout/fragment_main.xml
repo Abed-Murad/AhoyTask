@@ -2,14 +2,10 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
-
     <data>
-
         <variable
             name="viewModel"
-            type="tech.abed_murad.ahoytask.MainFragmentViewModel" />
-
+            type="tech.abed_murad.ahoytask.main.MainFragmentViewModel" />
         <variable
             name="today"
             type="tech.abed_murad.local.model.TodayResponse" />
@@ -22,8 +18,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".MainFragment">
-
+            tools:context=".main.MainFragment">
 
             <ProgressBar
                 android:id="@+id/headerProgressBar"
@@ -37,7 +32,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/detailWeatherCard"
                 android:layout_width="match_parent"
@@ -50,8 +44,6 @@
                 app:cardElevation="2dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
-
-
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/headerLayout"
@@ -77,7 +69,6 @@
                         app:layout_constraintTop_toTopOf="parent"
                         tools:text="London" />
 
-
                     <TextView
                         android:id="@+id/weatherDescriptionTV"
                         android:layout_width="0dp"
@@ -94,7 +85,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/cityNameTV"
                         tools:text="Sky is Clear" />
-
 
                     <ImageView
                         android:id="@+id/weatherIconIV"
@@ -125,7 +115,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/weatherDescriptionTV"
                         tools:text="26.25°" />
-
 
                     <TextView
                         android:id="@+id/maxTempTV"
@@ -160,11 +149,8 @@
                         tools:ignore="RtlSymmetry"
                         tools:text="21°" />
 
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
             </androidx.cardview.widget.CardView>
-
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/todayDataCard"
@@ -351,9 +337,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/forecastTitleTV"
                 tools:listitem="@layout/item_weather_forecast" />
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </androidx.core.widget.NestedScrollView>
 </layout>

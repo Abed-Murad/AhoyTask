@@ -3,13 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <data>
         <variable
             name="today"
             type="tech.abed_murad.local.model.ForecastResponse.DayWeather" />
     </data>
-
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cityWeatherCard"
@@ -71,7 +69,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.060000002"
-                app:srcCompat="@mipmap/ic_clear" />
+                app:srcCompat="@drawable/ic_sun" />
 
             <TextView
                 android:id="@+id/currentTempTV"
