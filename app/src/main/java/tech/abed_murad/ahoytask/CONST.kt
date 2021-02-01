@@ -13,7 +13,8 @@ object CONST {
 
 
     // Urls
-    const val URL_OPEN_WEATHER = "https://api.openweathermap.org/data/2.5/"
+    const val URL_OPEN_WEATHER = BuildConfig.SERVER_URL
+
 
     // Arguments
     const val KEY_DAY_WEATHER = "dayWeatherArg"

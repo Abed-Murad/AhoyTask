@@ -4,6 +4,10 @@ plugins {
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
 }
+
+
+
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -20,9 +24,19 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "SERVER_URL", '"https://api.openweathermap.org/data/2.5/"'
+
         }
+        debug{
+            debuggable true
+            buildConfigField "String", "SERVER_URL", '"https://api.openweathermap.org/data/2.5/"'
+        }
+    }
+    buildTypes.each {
+        it.buildConfigField 'String', 'API_KEY', API_KEY
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
