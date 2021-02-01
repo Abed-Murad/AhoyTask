@@ -6,23 +6,22 @@ import androidx.lifecycle.MutableLiveData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import tech.abed_murad.ahoytask.local.model.ForecastResponse
-import tech.abed_murad.ahoytask.local.model.ForecastResponse.DayWeather
-import tech.abed_murad.ahoytask.local.model.GlobalUserInfo
-import tech.abed_murad.ahoytask.local.model.TodayResponse
-import tech.abed_murad.ahoytask.local.room.WeatherDatabase
 import tech.abed_murad.ahoytask.network.WeatherService
+import tech.abed_murad.local.WeatherDatabase
+import tech.abed_murad.local.model.ForecastResponse
+import tech.abed_murad.local.model.GlobalUserInfo
+import tech.abed_murad.local.model.TodayResponse
 
 class WeatherRepository(
     private val remote: WeatherService,
     private val local: WeatherDatabase
 ) {
 
-    fun getWeatherData(): LiveData<List<DayWeather>> {
+    fun getWeatherData(): LiveData<List<ForecastResponse.DayWeather>> {
         return local.dayWeatherDao().getAll()
     }
 
-    private fun fetchDataFromRemote(lat: String, lon: String): LiveData<ArrayList<DayWeather>> {
+    private fun fetchDataFromRemote(lat: String, lon: String): LiveData<ArrayList<ForecastResponse.DayWeather>> {
 
         val forecastCall = remote.getWeatherForecast(
             lat, lon,
@@ -32,7 +31,7 @@ class WeatherRepository(
         )
 
 
-        var forecastList: MutableLiveData<ArrayList<DayWeather>> = MutableLiveData()
+        var forecastList: MutableLiveData<ArrayList<ForecastResponse.DayWeather>> = MutableLiveData()
         forecastCall.enqueue(object : Callback<ForecastResponse> {
 
             override fun onResponse(
@@ -55,7 +54,7 @@ class WeatherRepository(
 
     }
 
-    fun updateLocalDatabase(list: ArrayList<DayWeather>) {
+    fun updateLocalDatabase(list: ArrayList<ForecastResponse.DayWeather>) {
         local.dayWeatherDao().deleteAll()
         local.dayWeatherDao().insertAll(list)
     }

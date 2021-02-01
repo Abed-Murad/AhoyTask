@@ -21,6 +21,7 @@
         <item>Fahrenheit</item>
     </string-array>
 
-
+    <!-- Preference Titles -->
+    <string name="temperature">Temperature unit</string>
 
 </resources>

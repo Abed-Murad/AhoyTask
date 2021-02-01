@@ -1,21 +1,15 @@
-package tech.abed_murad.ahoytask.local.settings
+package tech.abed_murad.settings
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.chibatching.kotpref.livedata.asLiveData
-import tech.abed_murad.ahoytask.CONST
-import tech.abed_murad.ahoytask.R
-import tech.abed_murad.ahoytask.databinding.FragmentSettingsBinding
-import tech.abed_murad.ahoytask.local.model.GlobalUserInfo
-
+import tech.abed_murad.local.model.CONST
+import tech.abed_murad.local.model.GlobalUserInfo
+import tech.abed_murad.settings.databinding.FragmentSettingsBinding
 
 class SettingsFragment : Fragment() {
     private lateinit var viewModel: SettingsViewModel
@@ -38,17 +32,13 @@ class SettingsFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(SettingsViewModel::class.java)
 
 
-        requireActivity().findViewById<RadioGroup>(R.id.radioGroup)
-            .setOnCheckedChangeListener(RadioGroup.OnCheckedChangeListener { group, checkedId ->
-                Log.d("ttt", "$checkedId")
-            })
-                if (GlobalUserInfo.temperatureUnit == CONST.KEY_METRIC) {
-                    mBinding.centigradeSwitch.isChecked = true
-                    mBinding.fahrenheitSwitch.isChecked = false
-                } else {
-                    mBinding.fahrenheitSwitch.isChecked = true
-                    mBinding.centigradeSwitch.isChecked = false
-                }
+        if (GlobalUserInfo.temperatureUnit == CONST.KEY_METRIC) {
+            mBinding.centigradeSwitch.isChecked = true
+            mBinding.fahrenheitSwitch.isChecked = false
+        } else {
+            mBinding.fahrenheitSwitch.isChecked = true
+            mBinding.centigradeSwitch.isChecked = false
+        }
 
 
 
@@ -56,7 +46,8 @@ class SettingsFragment : Fragment() {
         mBinding.centigradeSwitch
             .setOnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked) {
-                    GlobalUserInfo.temperatureUnit = CONST.KEY_METRIC
+                    GlobalUserInfo.temperatureUnit =
+                        CONST.KEY_METRIC
                     mBinding.fahrenheitSwitch.isChecked = false
                 }
             }
@@ -64,7 +55,8 @@ class SettingsFragment : Fragment() {
         mBinding.fahrenheitSwitch
             .setOnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked) {
-                    GlobalUserInfo.temperatureUnit = CONST.KEY_IMPERIAL
+                    GlobalUserInfo.temperatureUnit =
+                        CONST.KEY_IMPERIAL
                     mBinding.centigradeSwitch.isChecked = false
                 }
             }

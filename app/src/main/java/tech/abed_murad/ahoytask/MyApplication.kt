@@ -1,13 +1,13 @@
 package tech.abed_murad.ahoytask
 
 import android.app.Application
-import tech.abed_murad.ahoytask.local.room.WeatherDatabase
 import androidx.room.Room
 import com.chibatching.kotpref.Kotpref
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import tech.abed_murad.ahoytask.CONST.URL_OPEN_WEATHER
 import tech.abed_murad.ahoytask.network.WeatherService
+import tech.abed_murad.local.WeatherDatabase
 
 
 class MyApplication : Application() {

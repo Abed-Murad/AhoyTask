@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/SettingsFragment"
-        android:name="tech.abed_murad.ahoytask.local.settings.SettingsFragment"
+        android:name="tech.abed_murad.settings.SettingsFragment"
         android:label="Settings" />
 
     <fragment
@@ -35,7 +35,7 @@
             app:destination="@id/MainFragment" />
         <argument
             android:name="dayWeatherArg"
-            app:argType="tech.abed_murad.ahoytask.local.model.ForecastResponse$DayWeather" />
+            app:argType="tech.abed_murad.local.model.ForecastResponse$DayWeather" />
         <action
             android:id="@+id/action_DetailsFragment_to_SettingsFragment"
             app:destination="@id/SettingsFragment" />

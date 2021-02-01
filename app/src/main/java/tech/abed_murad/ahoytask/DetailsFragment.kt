@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import tech.abed_murad.ahoytask.CONST.KEY_DAY_WEATHER
 import tech.abed_murad.ahoytask.databinding.FragmentDetialsBinding
-import tech.abed_murad.ahoytask.local.model.ForecastResponse.DayWeather
+import tech.abed_murad.local.model.ForecastResponse
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -29,7 +29,7 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val dayWeather = arguments?.getParcelable<DayWeather>(KEY_DAY_WEATHER)
+        val dayWeather = arguments?.getParcelable<ForecastResponse.DayWeather>(KEY_DAY_WEATHER)
         mBinding.today = dayWeather
         mBinding.dateDayTV.text = dayWeather!!.dt.getDay()
         mBinding.sunriseTV.text = dayWeather.sunrise.getTime()

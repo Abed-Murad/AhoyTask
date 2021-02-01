@@ -12,7 +12,7 @@
 
         <variable
             name="today"
-            type="tech.abed_murad.ahoytask.local.model.TodayResponse" />
+            type="tech.abed_murad.local.model.TodayResponse" />
     </data>
 
     <androidx.core.widget.NestedScrollView

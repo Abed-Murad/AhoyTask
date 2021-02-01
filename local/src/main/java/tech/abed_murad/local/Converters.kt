@@ -1,9 +1,10 @@
-package tech.abed_murad.ahoytask.local.room
+package tech.abed_murad.local
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import tech.abed_murad.ahoytask.local.model.*
+import tech.abed_murad.local.model.ForecastResponse
+import tech.abed_murad.local.model.Weather
 import java.lang.reflect.Type
 import java.util.*
 

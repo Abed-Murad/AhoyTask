@@ -1,7 +1,7 @@
-package tech.abed_murad.ahoytask.local.model
+package tech.abed_murad.local.model
 
 import com.chibatching.kotpref.KotprefModel
-import tech.abed_murad.ahoytask.BuildConfig
+import tech.abed_murad.domain.BuildConfig
 
 object GlobalUserInfo : KotprefModel() {
     var lat: String by stringPref("")

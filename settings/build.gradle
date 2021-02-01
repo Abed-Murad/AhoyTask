@@ -50,5 +50,9 @@ dependencies {
     implementation 'androidx.preference:preference-ktx:1.1.1'
     kapt "com.android.databinding:compiler:4.1.1"
 
+    implementation 'com.chibatching.kotpref:kotpref:2.13.0'
+    implementation 'com.chibatching.kotpref:livedata-support:2.13.0'
 
+
+    implementation project(":local")
 }

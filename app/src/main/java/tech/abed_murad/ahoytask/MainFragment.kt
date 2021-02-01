@@ -11,12 +11,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chibatching.kotpref.livedata.asLiveData
 import tech.abed_murad.ahoytask.CONST.KEY_DAY_WEATHER
-import tech.abed_murad.ahoytask.CONST.KEY_METRIC
 import tech.abed_murad.ahoytask.databinding.FragmentMainBinding
-import tech.abed_murad.ahoytask.local.model.ForecastResponse.DayWeather
-import tech.abed_murad.ahoytask.local.model.GlobalUserInfo
 import tech.abed_murad.ahoytask.repository.WeatherRepository
 import tech.abed_murad.ahoytask.viewmodel.MainFragmentViewModel
+import tech.abed_murad.local.model.ForecastResponse
+import tech.abed_murad.local.model.GlobalUserInfo
 
 
 class MainFragment : Fragment(), ForecastAdapter.RecyclerOnItemClickListener {
@@ -98,7 +97,7 @@ class MainFragment : Fragment(), ForecastAdapter.RecyclerOnItemClickListener {
             })
     }
 
-    override fun onItemClick(selectedDay: DayWeather) {
+    override fun onItemClick(selectedDay: ForecastResponse.DayWeather) {
         val bundle = Bundle()
         bundle.putParcelable(KEY_DAY_WEATHER, selectedDay)
         findNavController().navigate(R.id.action_MainFragment_to_DetailsFragment, bundle)

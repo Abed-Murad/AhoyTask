@@ -1,4 +1,4 @@
-package tech.abed_murad.ahoytask.local.model
+package tech.abed_murad.local.model
 
 
 import android.os.Parcelable

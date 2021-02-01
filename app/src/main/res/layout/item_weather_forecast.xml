@@ -7,7 +7,7 @@
     <data>
         <variable
             name="today"
-            type="tech.abed_murad.ahoytask.local.model.ForecastResponse.DayWeather" />
+            type="tech.abed_murad.local.model.ForecastResponse.DayWeather" />
     </data>
 
 

@@ -1,4 +1,4 @@
-package tech.abed_murad.ahoytask.local.settings
+package tech.abed_murad.settings
 
 import androidx.lifecycle.ViewModel
 

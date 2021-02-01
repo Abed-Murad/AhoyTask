@@ -7,17 +7,17 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import tech.abed_murad.ahoytask.databinding.ItemWeatherForecastBinding
-import tech.abed_murad.ahoytask.local.model.ForecastResponse.DayWeather
+import tech.abed_murad.local.model.ForecastResponse
 
 class ForecastAdapter(
     itemClickListener: RecyclerOnItemClickListener,
-    dayWeatherArrayList: List<DayWeather>
+    dayWeatherArrayList: List<ForecastResponse.DayWeather>
 ) :
     RecyclerView.Adapter<ForecastAdapter.WeatherHolder>() {
 
     var mItemClickListener: RecyclerOnItemClickListener = itemClickListener
 
-    private val dayWeatherList: List<DayWeather> = dayWeatherArrayList
+    private val dayWeatherList: List<ForecastResponse.DayWeather> = dayWeatherArrayList
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -46,13 +46,13 @@ class ForecastAdapter(
     inner class WeatherHolder(private val binding: ItemWeatherForecastBinding) :
         RecyclerView.ViewHolder(binding.root), View.OnClickListener {
 
-        private var mDayWeather: DayWeather? = null
+        private var mDayWeather: ForecastResponse.DayWeather? = null
 
         init {
             itemView.setOnClickListener(this)
         }
 
-        fun bind(dayWeather: DayWeather) {
+        fun bind(dayWeather: ForecastResponse.DayWeather) {
             this.mDayWeather = dayWeather
             binding.today = dayWeather
             binding.weatherIconIV.setImageResource(dayWeather.weather[0].main.getWeatherIcon())
@@ -68,7 +68,7 @@ class ForecastAdapter(
 
 
     interface RecyclerOnItemClickListener {
-        fun onItemClick(selectedDay: DayWeather)
+        fun onItemClick(selectedDay: ForecastResponse.DayWeather)
     }
 
 
