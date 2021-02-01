@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="tech.abed_murad.ahoytask.viewmodel.MainFragmentViewModel" />
+            type="tech.abed_murad.ahoytask.MainFragmentViewModel" />
 
         <variable
             name="today"

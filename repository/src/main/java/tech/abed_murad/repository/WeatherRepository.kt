@@ -1,4 +1,4 @@
-package tech.abed_murad.ahoytask.repository
+package tech.abed_murad.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -6,13 +6,13 @@ import androidx.lifecycle.MutableLiveData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import tech.abed_murad.ahoytask.network.WeatherService
 import tech.abed_murad.local.WeatherDatabase
 import tech.abed_murad.local.model.ForecastResponse
 import tech.abed_murad.local.model.GlobalUserInfo
 import tech.abed_murad.local.model.TodayResponse
+import tech.abed_murad.remote.WeatherService
 
-class WeatherRepository(
+ class WeatherRepository(
     private val remote: WeatherService,
     private val local: WeatherDatabase
 ) {

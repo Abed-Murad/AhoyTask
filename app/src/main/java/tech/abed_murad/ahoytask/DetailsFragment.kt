@@ -2,13 +2,13 @@ package tech.abed_murad.ahoytask
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import tech.abed_murad.ahoytask.CONST.KEY_DAY_WEATHER
+import androidx.fragment.app.Fragment
 import tech.abed_murad.ahoytask.databinding.FragmentDetialsBinding
+import tech.abed_murad.local.model.CONST.KEY_DAY_WEATHER
 import tech.abed_murad.local.model.ForecastResponse
 
 /**

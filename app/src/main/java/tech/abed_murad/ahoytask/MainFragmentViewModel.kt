@@ -1,12 +1,12 @@
-package tech.abed_murad.ahoytask.viewmodel
+package tech.abed_murad.ahoytask
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import tech.abed_murad.ahoytask.repository.WeatherRepository
+import tech.abed_murad.repository.WeatherRepository
 import tech.abed_murad.local.model.ForecastResponse
 import tech.abed_murad.local.model.TodayResponse
 
-class MainFragmentViewModel(var weatherRepository: WeatherRepository) : ViewModel() {
+class MainFragmentViewModel(var weatherRepository: tech.abed_murad.repository.WeatherRepository) : ViewModel() {
 
     fun getForecastWeather():
             LiveData<List<ForecastResponse.DayWeather>> {

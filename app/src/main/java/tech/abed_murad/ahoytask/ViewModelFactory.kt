@@ -1,11 +1,10 @@
-package tech.abed_murad.ahoytask.viewmodel
+package tech.abed_murad.ahoytask
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import tech.abed_murad.ahoytask.repository.WeatherRepository
 
 @Suppress("UNCHECKED_CAST")
-class MainFragmentModelFactory constructor(private val weatherRepository: WeatherRepository) :
+class MainFragmentModelFactory constructor(private val weatherRepository: tech.abed_murad.repository.WeatherRepository) :
     ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

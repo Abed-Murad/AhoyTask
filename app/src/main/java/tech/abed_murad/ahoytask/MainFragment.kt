@@ -10,12 +10,11 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chibatching.kotpref.livedata.asLiveData
-import tech.abed_murad.ahoytask.CONST.KEY_DAY_WEATHER
 import tech.abed_murad.ahoytask.databinding.FragmentMainBinding
-import tech.abed_murad.ahoytask.repository.WeatherRepository
-import tech.abed_murad.ahoytask.viewmodel.MainFragmentViewModel
+import tech.abed_murad.local.model.CONST.KEY_DAY_WEATHER
 import tech.abed_murad.local.model.ForecastResponse
 import tech.abed_murad.local.model.GlobalUserInfo
+import tech.abed_murad.repository.WeatherRepository
 
 
 class MainFragment : Fragment(), ForecastAdapter.RecyclerOnItemClickListener {

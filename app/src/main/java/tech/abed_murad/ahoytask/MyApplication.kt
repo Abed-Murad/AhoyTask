@@ -5,9 +5,9 @@ import androidx.room.Room
 import com.chibatching.kotpref.Kotpref
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import tech.abed_murad.ahoytask.CONST.URL_OPEN_WEATHER
-import tech.abed_murad.ahoytask.network.WeatherService
 import tech.abed_murad.local.WeatherDatabase
+import tech.abed_murad.local.model.CONST.URL_OPEN_WEATHER
+import tech.abed_murad.remote.WeatherService
 
 
 class MyApplication : Application() {

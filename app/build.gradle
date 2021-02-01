@@ -17,6 +17,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
+        multiDexEnabled true
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -90,7 +91,12 @@ dependencies {
     implementation 'android.arch.persistence.room:runtime:1.1.1'
 
 
+    implementation 'com.android.support:multidex:1.0.3'
+
+
 
     implementation project(":settings")
     implementation project(":local")
+    implementation project(":repository")
+    implementation project(":remote")
 }

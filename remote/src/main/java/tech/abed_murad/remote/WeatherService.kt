@@ -1,4 +1,4 @@
-package tech.abed_murad.ahoytask.network
+package tech.abed_murad.remote
 
 import retrofit2.Call
 import retrofit2.http.GET
