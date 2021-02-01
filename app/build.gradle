@@ -75,6 +75,10 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
 
 
+    implementation 'com.chibatching.kotpref:kotpref:2.13.0'
+    implementation 'com.chibatching.kotpref:livedata-support:2.13.0'
+
+
 
     implementation project(":settings")
 

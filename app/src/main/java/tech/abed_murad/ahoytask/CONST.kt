@@ -1,6 +1,7 @@
 package tech.abed_murad.ahoytask
 
 object CONST {
+    // Weather icon options
     var THUNDERSTORM = "Thunderstorm"
     var DRIZZLE = "Drizzle"
     var RAIN = "Rain"
@@ -9,4 +10,12 @@ object CONST {
     var CLEAR = "Clear"
     var CLOUDS = "Clouds"
     var EXTREME = "Extreme"
+
+
+    // Urls
+    const val URL_OPEN_WEATHER = "https://api.openweathermap.org/data/2.5/"
+
+    // Arguments
+    const val KEY_DAY_WEATHER = "dayWeatherArg"
+
 }

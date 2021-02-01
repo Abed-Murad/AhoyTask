@@ -1,5 +1,6 @@
 package tech.abed_murad.ahoytask.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import retrofit2.Call
@@ -7,6 +8,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import tech.abed_murad.ahoytask.local.model.ForecastResponse
 import tech.abed_murad.ahoytask.local.model.ForecastResponse.DayWeather
+import tech.abed_murad.ahoytask.local.model.GlobalUserInfo
 import tech.abed_murad.ahoytask.local.model.TodayResponse
 import tech.abed_murad.ahoytask.local.room.WeatherDatabase
 import tech.abed_murad.ahoytask.network.WeatherService
@@ -16,25 +18,17 @@ class WeatherRepository(
     private val local: WeatherDatabase
 ) {
 
-
-    fun insertWeatherData() {
-        val weatherDao = local.dayWeatherDao()
-
+    fun getWeatherData(): LiveData<List<DayWeather>> {
+        return local.dayWeatherDao().getAll()
     }
 
-
-    fun getWeatherData() {
-
-    }
-
-    fun getForecastWeather(lat: String, lon: String): LiveData<ArrayList<DayWeather>> {
+    private fun fetchDataFromRemote(lat: String, lon: String): LiveData<ArrayList<DayWeather>> {
 
         val forecastCall = remote.getWeatherForecast(
-            "31.388520",
-            "34.702372",
-            "10",
-            "metric",
-            "c9da7f4769c845195c654aa2c0d3f16b"
+            lat, lon,
+            GlobalUserInfo.forecast_days_count,
+            GlobalUserInfo.temperatureUnit,
+            GlobalUserInfo.api_key
         )
 
 
@@ -47,11 +41,12 @@ class WeatherRepository(
             ) {
                 if (response.code() == 200) {
                     forecastList.value = response.body()!!.list
+                    updateLocalDatabase(response.body()!!.list)
                 }
             }
 
             override fun onFailure(call: Call<ForecastResponse>, t: Throwable) {
-
+                Log.d("ttt", t.message)
             }
         })
 
@@ -60,19 +55,18 @@ class WeatherRepository(
 
     }
 
-
-    fun getTemperatureUnit(): String {
-        TODO()
+    fun updateLocalDatabase(list: ArrayList<DayWeather>) {
+        local.dayWeatherDao().deleteAll()
+        local.dayWeatherDao().insertAll(list)
     }
 
-
-    fun getTodayWeather(lat: String, lon: String): LiveData<TodayResponse> {
+    fun getTodayWeather(): LiveData<TodayResponse> {
 
         val todayCall = remote.getWeatherToday(
-            "31.388520",
-            "34.702372",
-            "metric",
-            "c9da7f4769c845195c654aa2c0d3f16b"
+            GlobalUserInfo.lat,
+            GlobalUserInfo.lon,
+            GlobalUserInfo.temperatureUnit,
+            GlobalUserInfo.api_key
         )
 
         var dayWeatherResponse: MutableLiveData<TodayResponse> = MutableLiveData()
@@ -92,11 +86,14 @@ class WeatherRepository(
                 t: Throwable
             ) {
                 dayWeatherResponse = MutableLiveData()
-
+                Log.d("ttt", t.message)
             }
         })
-
         return dayWeatherResponse
+    }
+
+    fun fetchDataFromRemote() {
+        fetchDataFromRemote(GlobalUserInfo.lat, GlobalUserInfo.lon)
     }
 
 

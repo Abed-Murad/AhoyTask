@@ -19,7 +19,7 @@ fun Context.toast(message: CharSequence) =
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 
 
-fun String.getImageIcon() = when (this) {
+fun String.getWeatherIcon() = when (this) {
     THUNDERSTORM -> R.mipmap.ic_atmosphere
     DRIZZLE -> R.mipmap.ic_drizzle
     RAIN -> R.mipmap.ic_rain

@@ -11,13 +11,13 @@ import tech.abed_murad.ahoytask.local.model.ForecastResponse.DayWeather
 
 class ForecastAdapter(
     itemClickListener: RecyclerOnItemClickListener,
-    dayWeatherArrayList: ArrayList<DayWeather>
+    dayWeatherArrayList: List<DayWeather>
 ) :
     RecyclerView.Adapter<ForecastAdapter.WeatherHolder>() {
 
     var mItemClickListener: RecyclerOnItemClickListener = itemClickListener
 
-    private val dayWeatherList: ArrayList<DayWeather> = dayWeatherArrayList
+    private val dayWeatherList: List<DayWeather> = dayWeatherArrayList
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -55,7 +55,7 @@ class ForecastAdapter(
         fun bind(dayWeather: DayWeather) {
             this.mDayWeather = dayWeather
             binding.today = dayWeather
-            binding.weatherIconIV.setImageResource(dayWeather.weather[0].main.getImageIcon())
+            binding.weatherIconIV.setImageResource(dayWeather.weather[0].main.getWeatherIcon())
             binding.dateTV.text = dayWeather.dt.getDay()
             binding.executePendingBindings()
         }

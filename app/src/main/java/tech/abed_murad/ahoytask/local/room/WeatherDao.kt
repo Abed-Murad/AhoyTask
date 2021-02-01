@@ -10,7 +10,7 @@ interface DayWeatherDao {
     fun getById(datetime: Int): DayWeather?
 
     @Query("SELECT * FROM DayWeather")
-     fun getAll(): LiveData<MutableList<DayWeather?>?>
+     fun getAll(): LiveData<List<DayWeather>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(dayWeather: DayWeather): Long

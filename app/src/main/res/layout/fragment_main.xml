@@ -25,6 +25,19 @@
             tools:context=".MainFragment">
 
 
+            <ProgressBar
+                android:id="@+id/headerProgressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:visibility="visible"
+                app:cardCornerRadius="1dp"
+                app:cardElevation="2dp"
+                app:layout_constraintBottom_toTopOf="@+id/todayDataCard"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/detailWeatherCard"
                 android:layout_width="match_parent"
@@ -32,10 +45,13 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:visibility="invisible"
                 app:cardCornerRadius="1dp"
                 app:cardElevation="2dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
+
+
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/headerLayout"

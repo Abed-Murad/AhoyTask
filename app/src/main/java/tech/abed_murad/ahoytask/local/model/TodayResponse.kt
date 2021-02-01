@@ -9,21 +9,21 @@ data class TodayResponse(
     @SerializedName("clouds")
     val clouds: Clouds,
     @SerializedName("cod")
-    val cod: Int,
+    val cod: Float,
     @SerializedName("coord")
     val coord: Coord,
     @SerializedName("dt")
-    val dt: Int,
+    val dt: Float,
     @SerializedName("id")
-    val id: Int,
+    val id: Float,
     @SerializedName("main")
     val main: Main,
     @SerializedName("name")
     val name: String,
     @SerializedName("timezone")
-    val timezone: Int,
+    val timezone: Float,
     @SerializedName("visibility")
-    val visibility: Int,
+    val visibility: Float,
     @SerializedName("weather")
     val weather: List<Weather>,
     @SerializedName("wind")
@@ -31,27 +31,27 @@ data class TodayResponse(
 ) {
     data class Clouds(
         @SerializedName("all")
-        val all: Int
+        val all: Float
     )
 
     data class Main(
         @SerializedName("feels_like")
         val feelsLike: Double,
         @SerializedName("humidity")
-        val humidity: Int,
+        val humidity: Float,
         @SerializedName("pressure")
-        val pressure: Int,
+        val pressure: Float,
         @SerializedName("temp")
         val temp: Double,
         @SerializedName("temp_max")
         val tempMax: Double,
         @SerializedName("temp_min")
-        val tempMin: Int
+        val tempMin: Float
     )
 
     data class Wind(
         @SerializedName("deg")
-        val deg: Int,
+        val deg: Float,
         @SerializedName("speed")
         val speed: Double
     )

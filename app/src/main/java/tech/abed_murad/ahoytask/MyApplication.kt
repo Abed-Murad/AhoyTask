@@ -3,39 +3,32 @@ package tech.abed_murad.ahoytask
 import android.app.Application
 import tech.abed_murad.ahoytask.local.room.WeatherDatabase
 import androidx.room.Room
+import com.chibatching.kotpref.Kotpref
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import tech.abed_murad.ahoytask.CONST.URL_OPEN_WEATHER
 import tech.abed_murad.ahoytask.network.WeatherService
 
 
 class MyApplication : Application() {
-    lateinit var db: WeatherDatabase
+    val local: WeatherDatabase by lazy {
+        Room.databaseBuilder(this, WeatherDatabase::class.java, WeatherDatabase.NAME)
+            .fallbackToDestructiveMigration()
+            .allowMainThreadQueries()
+            .build()
+    }
+
+    val remote: WeatherService by lazy {
+        Retrofit.Builder()
+            .baseUrl(URL_OPEN_WEATHER)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build().create(WeatherService::class.java)
+    }
 
 
     override fun onCreate() {
         super.onCreate()
-
-
+        Kotpref.init(this)
     }
-
-
-    fun weatherDatabase(): WeatherDatabase {
-        db = Room.databaseBuilder(this, WeatherDatabase::class.java, WeatherDatabase.NAME)
-            .fallbackToDestructiveMigration()
-            .allowMainThreadQueries()
-            .build()
-        return db
-    }
-
-
-    fun getWeatherService(): WeatherService {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.openweathermap.org/data/2.5/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        return retrofit.create(WeatherService::class.java)
-    }
-
 
 }

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import tech.abed_murad.ahoytask.CONST.KEY_DAY_WEATHER
 import tech.abed_murad.ahoytask.databinding.FragmentDetialsBinding
 import tech.abed_murad.ahoytask.local.model.ForecastResponse.DayWeather
 
@@ -28,14 +29,15 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val dayWeather = arguments?.getParcelable<DayWeather>("dayWeatherArg")
+        val dayWeather = arguments?.getParcelable<DayWeather>(KEY_DAY_WEATHER)
         mBinding.today = dayWeather
         mBinding.dateDayTV.text = dayWeather!!.dt.getDay()
         mBinding.sunriseTV.text = dayWeather.sunrise.getTime()
         mBinding.sunsetTV.text = dayWeather.sunset.getTime()
+        mBinding.weatherIconIV.setImageResource(dayWeather.weather[0].main.getWeatherIcon())
 
 
-        val db = (requireActivity().application as MyApplication).db
+        val db = (requireActivity().application as MyApplication).local
         val weatherDao = db.dayWeatherDao()
 
 
