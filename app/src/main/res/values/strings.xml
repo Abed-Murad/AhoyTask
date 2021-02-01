@@ -23,5 +23,5 @@
     <string name="imperial" >Fahrenheit</string>
 
     <!-- Preference Titles -->
-    <string name="temperature_header">Temperature</string>
+    <string name="temperature">Temperature unit</string>
 </resources>

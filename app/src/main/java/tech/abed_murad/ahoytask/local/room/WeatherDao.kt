@@ -24,6 +24,6 @@ interface DayWeatherDao {
     @Delete
     fun delete(dayWeather: DayWeather?)
 
-    @Query("DELETE FROM dayweather")
+    @Query("DELETE FROM DayWeather")
     fun deleteAll()
 }
