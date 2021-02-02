@@ -4,10 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import tech.abed_murad.local.model.ForecastResponse
 import tech.abed_murad.local.model.TodayResponse
-import tech.abed_murad.repository.WeatherRepository
+import tech.abed_murad.repository.WeatherRepositoryImpl
 
-class MainFragmentViewModel(var weatherRepository: WeatherRepository) : ViewModel() {
-
+class MainFragmentViewModel(var weatherRepository: WeatherRepositoryImpl) : ViewModel() {
     fun getForecastWeather():
             LiveData<List<ForecastResponse.DayWeather>> {
         return weatherRepository.getWeatherData()

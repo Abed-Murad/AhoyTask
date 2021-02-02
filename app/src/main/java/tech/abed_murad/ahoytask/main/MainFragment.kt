@@ -10,22 +10,19 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chibatching.kotpref.livedata.asLiveData
-import tech.abed_murad.ahoytask.MyApplication
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import tech.abed_murad.ahoytask.R
 import tech.abed_murad.ahoytask.databinding.FragmentMainBinding
 import tech.abed_murad.ahoytask.util.getWeatherIcon
 import tech.abed_murad.local.CONST.KEY_DAY_WEATHER
-import tech.abed_murad.local.model.ForecastResponse
 import tech.abed_murad.local.GlobalUserInfo
-import tech.abed_murad.repository.WeatherRepository
+import tech.abed_murad.local.model.ForecastResponse
 
 
 class MainFragment : Fragment(), ForecastAdapter.RecyclerOnItemClickListener {
 
     private lateinit var mBinding: FragmentMainBinding
-
-    lateinit var mViewModel: MainFragmentViewModel
-
+    private val mViewModel: MainFragmentViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,14 +39,8 @@ class MainFragment : Fragment(), ForecastAdapter.RecyclerOnItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val application = requireActivity().application as MyApplication
-        val weatherRepository = WeatherRepository(application.remote, application.local)
-
-        mViewModel = MainFragmentViewModel(weatherRepository)
         mBinding.viewModel = mViewModel
-
         initObservers()
-
     }
 
     private fun initObservers() {

@@ -9,7 +9,6 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.os.Looper
 import android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -64,11 +63,10 @@ class MainActivity : AppCompatActivity() {
 
                 val currentFragment =
                     NavHostFragment.findNavController(nav_host_fragment).currentDestination?.displayName
-                Log.d("ttt", currentFragment.toString())
-                if (currentFragment == "tech.abed_murad.ahoytask:id/MainFragment") {
+                if (currentFragment == getString(R.string.main_fragment_name_id)) {
                     findNavController(R.id.nav_host_fragment).navigate(R.id.action_MainFragment_to_SettingsFragment)
                     return true
-                } else if (currentFragment == "tech.abed_murad.ahoytask:id/DetailsFragment") {
+                } else if (currentFragment == getString(R.string.details_fragment_name_id)) {
                     findNavController(R.id.nav_host_fragment).navigate(R.id.action_DetailsFragment_to_SettingsFragment)
                     return true
                 }

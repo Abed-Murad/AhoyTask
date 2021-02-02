@@ -1,9 +1,9 @@
 package tech.abed_murad.ahoytask.settings
 
 import androidx.lifecycle.ViewModel
-import tech.abed_murad.repository.WeatherRepository
+import tech.abed_murad.repository.WeatherRepositoryImpl
 
-class SettingsViewModel(var weatherRepository: WeatherRepository) : ViewModel() {
+class SettingsViewModel(var weatherRepository: WeatherRepositoryImpl) : ViewModel() {
 
     fun updateTemperatureUnit(newUnit: String) {
         weatherRepository.updateTemperatureUnit(newUnit)

@@ -18,4 +18,7 @@
     <string name="temperature">Temperature unit</string>
     <string name="metric">Centigrade</string>
     <string name="imperial">Fahrenheit</string>
+    <string name="main_fragment_name_id">tech.abed_murad.ahoytask:id/MainFragment</string>
+    <string name="details_fragment_name_id">tech.abed_murad.ahoytask:id/DetailsFragment</string>
+    <string name="today">Today</string>
 </resources>

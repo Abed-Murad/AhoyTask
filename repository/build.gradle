@@ -48,6 +48,11 @@ dependencies {
     implementation 'com.chibatching.kotpref:kotpref:2.13.0'
     implementation 'com.chibatching.kotpref:livedata-support:2.13.0'
 
+    implementation "org.koin:koin-android:2.2.2"
+    implementation "org.koin:koin-androidx-viewmodel:2.2.2"
+    implementation "org.koin:koin-android-scope:2.2.2"
+    implementation "org.koin:koin-test:2.2.1"
+
     implementation project(":remote")
     implementation project(":local")
 

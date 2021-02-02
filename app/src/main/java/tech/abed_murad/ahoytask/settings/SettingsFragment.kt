@@ -6,15 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import tech.abed_murad.ahoytask.MyApplication
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import tech.abed_murad.ahoytask.R
 import tech.abed_murad.ahoytask.databinding.FragmentSettingsBinding
 import tech.abed_murad.local.CONST
-import tech.abed_murad.repository.WeatherRepository
+
 
 class SettingsFragment : Fragment() {
-    private lateinit var mViewModel: SettingsViewModel
+    private val mViewModel: SettingsViewModel by viewModel()
     private lateinit var mBinding: FragmentSettingsBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,10 +31,6 @@ class SettingsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val application = requireActivity().application as MyApplication
-        val weatherRepository = WeatherRepository(application.remote, application.local)
-        mViewModel = SettingsViewModel(weatherRepository)
-
         populateUI()
         initLayoutListeners()
 
@@ -50,11 +47,13 @@ class SettingsFragment : Fragment() {
     }
 
     private fun initLayoutListeners() {
-        mBinding.centigradeSwitch
-            .setOnCheckedChangeListener { _, isChecked ->
+        mBinding.centigradeSwitch.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
                     mViewModel.updateTemperatureUnit(CONST.KEY_METRIC)
                     mBinding.fahrenheitSwitch.isChecked = false
+                } else {
+                    mBinding.fahrenheitSwitch.isChecked = true
+                    mViewModel.updateTemperatureUnit(CONST.KEY_IMPERIAL)
                 }
             }
 
@@ -63,6 +62,10 @@ class SettingsFragment : Fragment() {
                 if (isChecked) {
                     mViewModel.updateTemperatureUnit(CONST.KEY_IMPERIAL)
                     mBinding.centigradeSwitch.isChecked = false
+                } else {
+                    mBinding.centigradeSwitch.isChecked = true
+                    mViewModel.updateTemperatureUnit(CONST.KEY_METRIC)
+
                 }
             }
     }

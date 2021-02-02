@@ -1,13 +1,12 @@
 package tech.abed_murad.ahoytask.details
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import tech.abed_murad.ahoytask.*
+import tech.abed_murad.ahoytask.R
 import tech.abed_murad.ahoytask.databinding.FragmentDetialsBinding
 import tech.abed_murad.ahoytask.util.getDay
 import tech.abed_murad.ahoytask.util.getTime
@@ -39,15 +38,6 @@ class DetailsFragment : Fragment() {
         mBinding.sunriseTV.text = dayWeather.sunrise.getTime()
         mBinding.sunsetTV.text = dayWeather.sunset.getTime()
         mBinding.weatherIconIV.setImageResource(dayWeather.weather[0].main.getWeatherIcon())
-
-
-        val db = (requireActivity().application as MyApplication).local
-        val weatherDao = db.dayWeatherDao()
-
-
-        val result = weatherDao.getAll().value
-        Log.d("ttt", result.toString())
-
     }
 
 }

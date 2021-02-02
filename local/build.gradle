@@ -28,10 +28,12 @@ android {
 
     buildTypes {
         release {
+            // Production
             buildConfigField "String", "SERVER_URL", '"https://api.openweathermap.org/data/2.5/"'
 
         }
         debug{
+            // Development
             buildConfigField "String", "SERVER_URL", '"https://api.openweathermap.org/data/2.5/"'
         }
     }

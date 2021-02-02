@@ -23,6 +23,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    buildTypes {
+        release {
+            // Production
+            buildConfigField "String", "SERVER_URL", '"https://api.openweathermap.org/data/2.5/"'
+
+        }
+        debug{
+            // Development
+            buildConfigField "String", "SERVER_URL", '"https://api.openweathermap.org/data/2.5/"'
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

@@ -2,10 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="viewModel"
             type="tech.abed_murad.ahoytask.main.MainFragmentViewModel" />
+
         <variable
             name="today"
             type="tech.abed_murad.local.model.TodayResponse" />
@@ -13,7 +16,8 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#EFEFEF">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -36,12 +40,12 @@
                 android:id="@+id/detailWeatherCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:visibility="invisible"
-                app:cardCornerRadius="1dp"
-                app:cardElevation="2dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="3dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -49,7 +53,6 @@
                     android:id="@+id/headerLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#80DEEA"
                     android:paddingTop="16dp"
                     android:paddingBottom="16dp">
 
@@ -59,7 +62,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginLeft="16dp"
-                        android:layout_marginTop="16dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
                         android:text="@{today.name}"
@@ -90,13 +92,12 @@
                         android:id="@+id/weatherIconIV"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
-                        android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
                         android:layout_marginBottom="8dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/cityNameTV"
                         app:layout_constraintVertical_bias="0.060000002"
                         app:srcCompat="@mipmap/ic_clear"
                         tools:srcCompat="@mipmap/ic_clear" />
@@ -149,6 +150,22 @@
                         tools:ignore="RtlSymmetry"
                         tools:text="21°" />
 
+
+                    <TextView
+                        android:id="@+id/todayLabelTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:text="@string/today"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/weatherIconIV"
+                        app:layout_constraintTop_toBottomOf="@+id/weatherIconIV"
+                        app:layout_constraintVertical_bias="0.0" />
+
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -159,7 +176,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                app:cardCornerRadius="1dp"
+                app:cardCornerRadius="8dp"
                 app:cardElevation="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
