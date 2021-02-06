@@ -62,7 +62,7 @@ class MainFragment : Fragment(), ForecastAdapter.RecyclerOnItemClickListener {
 
     private fun updateTodayWeatherUI() {
         mViewModel.getTodayWeather()
-            .observe(viewLifecycleOwner, Observer { todayWeather ->
+            .observe(viewLifecycleOwner, { todayWeather ->
                 mBinding.today = todayWeather
                 mBinding.weatherIconIV
                     .setImageResource(todayWeather.weather[0].main.getWeatherIcon())
